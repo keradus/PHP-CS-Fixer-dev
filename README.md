@@ -1,1 +1,1 @@
-# PHP-CS-Fixer-dev
+# PHP CS Fixer DEV tool
