@@ -12,7 +12,7 @@
 namespace Keradus\PhpCsFixerDev\Console;
 
 use Keradus\PhpCsFixerDev\Console\Command\DecodeIdCommand;
-use Keradus\PhpCsFixerDev\Console\Command\TokenizeCommand;
+use Keradus\PhpCsFixerDev\Console\Command\ParseCommand;
 use Symfony\Component\Console\Application as BaseApplication;
 
 /**
@@ -25,6 +25,6 @@ final class Application extends BaseApplication
         parent::__construct('PHP CS Fixer Dev', 'dev');
 
         $this->add(new DecodeIdCommand());
-        $this->add(new TokenizeCommand());
+        $this->add(new ParseCommand());
     }
 }

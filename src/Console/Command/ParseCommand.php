@@ -23,7 +23,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * @author Dariusz Rumiński <dariusz.ruminski@gmail.com>
  */
-final class TokenizeCommand extends Command
+final class ParseCommand extends Command
 {
     const MODE_NATIVE = 'native';
     const MODE_FIXER = 'fixer';
@@ -31,7 +31,7 @@ final class TokenizeCommand extends Command
     const FORMAT_DUMP = 'dump';
     const FORMAT_JSON = 'json';
 
-    protected static $defaultName = 'tokenize';
+    protected static $defaultName = 'parse';
 
     /**
      * {@inheritdoc}
@@ -42,8 +42,8 @@ final class TokenizeCommand extends Command
             ->setDefinition(
                 [
                     new InputArgument('path', InputArgument::REQUIRED),
-                    new InputOption('mode', null, InputOption::VALUE_REQUIRED, '', self::MODE_FIXER),
-                    new InputOption('format', null, InputOption::VALUE_REQUIRED, '', self::FORMAT_JSON),
+                    new InputOption('mode', null, InputOption::VALUE_REQUIRED, 'Parsing mode: `fixer` or `native`.', self::MODE_FIXER),
+                    new InputOption('format', null, InputOption::VALUE_REQUIRED, 'Output format: `json` or `dump`.', self::FORMAT_JSON),
                 ]
             )
             ->setDescription('Tokenize a file.')
