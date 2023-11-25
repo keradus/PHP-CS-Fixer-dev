@@ -25,17 +25,14 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 final class ParseCommand extends Command
 {
-    const MODE_NATIVE = 'native';
-    const MODE_FIXER = 'fixer';
+    public const MODE_NATIVE = 'native';
+    public const MODE_FIXER = 'fixer';
 
-    const FORMAT_DUMP = 'dump';
-    const FORMAT_JSON = 'json';
+    public const FORMAT_DUMP = 'dump';
+    public const FORMAT_JSON = 'json';
 
     protected static $defaultName = 'parse';
 
-    /**
-     * {@inheritdoc}
-     */
     protected function configure()
     {
         $this
@@ -50,15 +47,11 @@ final class ParseCommand extends Command
         ;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $stdErr = $output instanceof ConsoleOutputInterface
             ? $output->getErrorOutput()
-            : $output
-        ;
+            : $output;
 
         $path = $input->getArgument('path');
         $mode = $input->getOption('mode');
@@ -100,5 +93,7 @@ final class ParseCommand extends Command
         } else {
             $output->writeln($tokensJson);
         }
+
+        return 0;
     }
 }

@@ -2,7 +2,7 @@
 <?php
 
 /*
- * This file is part of PHP CS Fixer.
+ * This file is part of PHP CS Fixer Dev.
  *
  * (c) Dariusz Rumiński <dariusz.ruminski@gmail.com>
  *
@@ -10,10 +10,7 @@
  * with this source code in the file LICENSE.
  */
 
-/**
- * @author Dariusz Rumiński <dariusz.ruminski@gmail.com>
- */
-set_error_handler(function ($severity, $message, $file, $line) {
+set_error_handler(static function ($severity, $message, $file, $line) {
     if ($severity & error_reporting()) {
         throw new ErrorException($message, 0, $severity, $file, $line);
     }

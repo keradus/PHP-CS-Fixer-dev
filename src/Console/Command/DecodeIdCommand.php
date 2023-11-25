@@ -25,9 +25,6 @@ final class DecodeIdCommand extends Command
 {
     protected static $defaultName = 'decode-id';
 
-    /**
-     * {@inheritdoc}
-     */
     protected function configure()
     {
         $this
@@ -40,15 +37,11 @@ final class DecodeIdCommand extends Command
         ;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $stdErr = $output instanceof ConsoleOutputInterface
             ? $output->getErrorOutput()
-            : $output
-        ;
+            : $output;
 
         $id = $input->getArgument('id');
 
@@ -66,5 +59,7 @@ final class DecodeIdCommand extends Command
         }
 
         $output->writeln($name);
+
+        return 0;
     }
 }
